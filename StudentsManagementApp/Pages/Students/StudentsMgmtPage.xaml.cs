@@ -25,17 +25,27 @@ namespace StudentsManagementApp.Pages.Students
     public partial class StudentsMgmtPage : Page
     {
         public ObservableCollection<Student> StudentsList { get; set; }
+        public Student SelectedStudent { get; set; } = new Student() {LastName = "Empty"};
+
         public StudentsMgmtPage()
         {
             
             InitializeComponent();
-            StudentsList = App.DbModel.Students.Local;
-            this.DataContext = this;
+            //StudentsList = App.DbModel.Students.Local;
+            StudentsList = new ObservableCollection<Student>(App.DbModel.Students);
+            
+            
+            DataContext = this;
             //App.DbModel.Students.Add(new Student()
             //    {Age = 18, Group = new Group(), FirstName = "FirstS", LastName = "LastS"});
             //App.DbModel.SaveChanges();
             //Binding binding = BindingOperations.GetBinding(StudentsListBox, ListBox.ItemsSourceProperty);
 
+        }
+
+        private void StudentsListBoxSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            SelectedStudent = (Student)StudentsListBox.SelectedItem;
         }
     }
 }

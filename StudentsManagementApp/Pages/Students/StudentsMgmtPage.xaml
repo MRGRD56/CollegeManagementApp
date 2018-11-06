@@ -13,18 +13,35 @@
             <ColumnDefinition Width="265"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Grid>
+        <Grid Background="#455a64">
             <Grid.RowDefinitions>
                 <RowDefinition Height="30px"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="30px"/>
             </Grid.RowDefinitions>
             <TextBox MinWidth="226" MaxWidth="226px" HorizontalAlignment="Right" Margin="0 4 5 4" BorderThickness="0" Background="#546e7a" Foreground="#b0bec5"/>
-            <ListBox Name="StudentsListBox" Grid.Row="1" Background="#37474f" BorderThickness="0" ItemsSource="{Binding StudentsList}" DisplayMemberPath="FirstName"/>
+            <ListBox Name="StudentsListBox" Grid.Row="1" Background="#455a64" BorderThickness="0" ItemsSource="{Binding StudentsList}" SelectionChanged="StudentsListBoxSelectionChanged">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Height="30px" Orientation="Horizontal">
+                            <Label Style="{StaticResource ListBoxLabel}" Content="{Binding Path=LastName}"/>
+                            <Label Style="{StaticResource ListBoxLabel}" Content="{Binding Path=FirstName}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
             <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
                 <Button Margin="6 4" Content="Удалить" Height="auto" Width="75px"/>
                 <Button Margin="6 4" Content="Изменить" Height="auto" Width="75px"/>
                 <Button Margin="6 4" Content="Добавить" Height="auto" Width="75px"/>
+            </StackPanel>
+        </Grid>
+        <Grid Name="StudentInfoGrid" Grid.Column="1">
+            <StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Фамилия: "/>
+                    <TextBox Text="{Binding Source=SelectedStudent, Path=LastName}"/>
+                </StackPanel>
             </StackPanel>
         </Grid>
     </Grid>
