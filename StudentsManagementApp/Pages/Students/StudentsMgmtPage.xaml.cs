@@ -50,10 +50,10 @@ namespace StudentsManagementApp.Pages.Students
 
         private void RemoveSelectedStudent(object sender, RoutedEventArgs e)
         {
-            StudentsList.Remove(SelectedStudent);
-
             App.DbModel.Students.Remove(SelectedStudent);
             App.DbModel.SaveChanges();
+
+            StudentsList.Remove(SelectedStudent);
         }
     }
 }

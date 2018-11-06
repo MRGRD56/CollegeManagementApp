@@ -40,7 +40,7 @@
             <StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <Label Content="Фамилия: "/>
-                    <TextBox Text="{Binding Source=SelectedStudent, Path=LastName}"/>
+                    <TextBox Width="200px" Text="{Binding Source=SelectedStudent, Path=LastName, TargetNullValue=Фамилия}"/>
                 </StackPanel>
             </StackPanel>
         </Grid>
