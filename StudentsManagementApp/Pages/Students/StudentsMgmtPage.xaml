@@ -31,7 +31,7 @@
                 </ListBox.ItemTemplate>
             </ListBox>
             <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
-                <Button Margin="6 4" Content="Удалить" Height="auto" Width="75px"/>
+                <Button Margin="6 4" Content="Удалить" Height="auto" Width="75px" Click="RemoveSelectedStudent"/>
                 <Button Margin="6 4" Content="Изменить" Height="auto" Width="75px"/>
                 <Button Margin="6 4" Content="Добавить" Height="auto" Width="75px"/>
             </StackPanel>

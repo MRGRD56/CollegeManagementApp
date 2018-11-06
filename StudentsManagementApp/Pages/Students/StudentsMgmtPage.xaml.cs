@@ -45,7 +45,15 @@ namespace StudentsManagementApp.Pages.Students
 
         private void StudentsListBoxSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            SelectedStudent = (Student)StudentsListBox.SelectedItem;
+            SelectedStudent = (Student) StudentsListBox.SelectedItem;
+        }
+
+        private void RemoveSelectedStudent(object sender, RoutedEventArgs e)
+        {
+            StudentsList.Remove(SelectedStudent);
+
+            App.DbModel.Students.Remove(SelectedStudent);
+            App.DbModel.SaveChanges();
         }
     }
 }

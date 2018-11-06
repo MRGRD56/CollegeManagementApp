@@ -12,7 +12,7 @@
         <StackPanel Margin="150 -50 0 0" VerticalAlignment="Center">
             <Label FontSize="26px" Content="Добро пожаловать" Foreground="#b0bec5" HorizontalAlignment="Center" Margin="0 40 0 20"/>
             <Label FontSize="20px" Content="StudentsManagementApp" Foreground="#cfd8dc" HorizontalAlignment="Center"/>
-            <Label FontSize="20px" Content="Версия программы v1.1" Foreground="#cfd8dc" HorizontalAlignment="Center"/>
+            <Label FontSize="20px" Content="Версия программы v0.12" Foreground="#cfd8dc" HorizontalAlignment="Center"/>
             <Label FontSize="20px" Content="Made by Kirill Golikov, 2018" Foreground="#cfd8dc" HorizontalAlignment="Center"/>
         </StackPanel>
     </Grid>
