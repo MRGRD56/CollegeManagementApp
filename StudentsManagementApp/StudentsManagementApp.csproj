@@ -35,8 +35,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -63,12 +72,48 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Migrations\201811050711267_CreateEmpty.cs" />
+    <Compile Include="Migrations\201811050711267_CreateEmpty.Designer.cs">
+      <DependentUpon>201811050711267_CreateEmpty.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811050756512_CreateDB.cs" />
+    <Compile Include="Migrations\201811050756512_CreateDB.Designer.cs">
+      <DependentUpon>201811050756512_CreateDB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811050947184_Migration1FullName.cs" />
+    <Compile Include="Migrations\201811050947184_Migration1FullName.Designer.cs">
+      <DependentUpon>201811050947184_Migration1FullName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811050956114_Migration1FullNameCancel.cs" />
+    <Compile Include="Migrations\201811050956114_Migration1FullNameCancel.Designer.cs">
+      <DependentUpon>201811050956114_Migration1FullNameCancel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\CollegeModel.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Pages\Students\StudentsMgmtPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\WelcomePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\Group.cs" />
+    <Compile Include="Models\Person.cs" />
+    <Compile Include="Models\Student.cs" />
+    <Compile Include="Models\Teacher.cs" />
+    <Compile Include="Pages\Students\StudentsMgmtPage.xaml.cs">
+      <DependentUpon>StudentsMgmtPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\WelcomePage.xaml.cs">
+      <DependentUpon>WelcomePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -82,10 +127,23 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="Migrations\201811050711267_CreateEmpty.resx">
+      <DependentUpon>201811050711267_CreateEmpty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811050756512_CreateDB.resx">
+      <DependentUpon>201811050756512_CreateDB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811050947184_Migration1FullName.resx">
+      <DependentUpon>201811050947184_Migration1FullName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811050956114_Migration1FullNameCancel.resx">
+      <DependentUpon>201811050956114_Migration1FullNameCancel.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -93,6 +151,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Pages\Groups\" />
+    <Folder Include="Pages\Teachers\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

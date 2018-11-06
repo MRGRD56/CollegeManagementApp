@@ -1,0 +1,19 @@
+﻿<Page x:Class="StudentsManagementApp.Pages.WelkomePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:StudentsManagementApp.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="WelkomePage">
+
+    <Grid>
+        <StackPanel Margin="150 -50 0 0" VerticalAlignment="Center">
+            <Label FontSize="26px" Content="Добро пожаловать" Foreground="#b0bec5" HorizontalAlignment="Center" Margin="0 40 0 20"/>
+            <Label FontSize="20px" Content="StudentsManagementApp" Foreground="#cfd8dc" HorizontalAlignment="Center"/>
+            <Label FontSize="20px" Content="Версия программы v1.1" Foreground="#cfd8dc" HorizontalAlignment="Center"/>
+            <Label FontSize="20px" Content="Made by Kirill Golikov, 2018" Foreground="#cfd8dc" HorizontalAlignment="Center"/>
+        </StackPanel>
+    </Grid>
+</Page>

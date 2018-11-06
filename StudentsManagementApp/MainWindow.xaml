@@ -6,7 +6,43 @@
         xmlns:local="clr-namespace:StudentsManagementApp"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
+    <Grid Background="#37474F">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="199"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid Name="LeftPanel" ZIndex="2">
+            <Grid.Resources>
+                <Style TargetType="Button">
+                    <Setter Property="Height" Value="30"/>
+                    <Setter Property="FontSize" Value="14px"/>
+                    <Setter Property="BorderThickness" Value="0"/>
+                    <Setter Property="Background" Value="#546e7a"/>
+                    <Setter Property="Margin" Value="5 2"/>
+                    <Setter Property="Foreground" Value="#eceff1"/>
+                    <!--<Setter Property="" Value=""/>
+                    <Setter Property="" Value=""/>-->
+                </Style>
+            </Grid.Resources>
+            <Button Name="ShowLeftPanelButton" Visibility="Collapsed" VerticalAlignment="Top" HorizontalAlignment="Left" Content="&gt;" Click="ShowLeftPanel"/>
+            <StackPanel Background="#263238">
+                <StackPanel Orientation="Horizontal">
+                    <Button Content="&lt;" FontSize="14px" Height="20" Width="22px" Click="HideLeftPanelButtonClick"/>
+                    <Label Content="CollegeManagement" HorizontalContentAlignment="Center" FontSize="16px" FontWeight="Bold" Foreground="#cfd8dc"/>
+                </StackPanel>
+
+                <Button Content="Студенты" Click="OpenStudentsManagementPage"/>
+                <Button Content="Преподаватели"/>
+                <Button Content="Группы"/>
+
+            </StackPanel>
+            <StackPanel VerticalAlignment="Bottom">
+                <Button Content="О приложении" Click="WelcomePageOpen"/>
+                <Button Content="Выход" Margin="5 3 5 5" Click="AppClose"/>
+            </StackPanel>
+        </Grid>
+        <Button Content="&gt;" FontSize="14px" Click="ShowLeftPanel" HorizontalAlignment="Left" VerticalAlignment="Top" Width="20px" Height="20px" Margin="5px"/>
+        <Frame Name="MainFrame" Grid.ColumnSpan="2" Source="Pages/WelcomePage.xaml" NavigationUIVisibility="Hidden"/>
     </Grid>
 </Window>

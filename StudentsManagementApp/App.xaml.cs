@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
+using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using StudentsManagementApp.Models;
 
 namespace StudentsManagementApp
 {
@@ -13,5 +15,6 @@ namespace StudentsManagementApp
     /// </summary>
     public partial class App : Application
     {
+        public static CollegeModel DbModel { get; set; } = new CollegeModel();
     }
 }
