@@ -20,7 +20,7 @@
                 <RowDefinition Height="30px"/>
             </Grid.RowDefinitions>
             <TextBox MinWidth="226" MaxWidth="226px" HorizontalAlignment="Right" Margin="0 4 5 4" BorderThickness="0" Background="#546e7a" Foreground="#b0bec5"/>
-            <ListBox Name="StudentsListBox" Grid.Row="1" Background="#455a64" BorderThickness="0" ItemsSource="{Binding StudentsList}" SelectionChanged="StudentsListBoxSelectionChanged">
+            <ListBox Name="StudentsListBox" Grid.Row="1" Background="#455a64" BorderThickness="0" ItemsSource="{Binding StudentsList}" SelectedItem="{Binding SelectedStudent}">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Height="30px" Orientation="Horizontal">
@@ -39,8 +39,8 @@
         <Grid Name="StudentInfoGrid" Grid.Column="1">
             <StackPanel>
                 <StackPanel Orientation="Horizontal">
-                    <Label Content="Фамилия: "/>
-                    <TextBox Width="200px" Text="{Binding Source=SelectedStudent, Path=LastName, TargetNullValue=Фамилия}"/>
+                    <Label Foreground="White" Content="Фамилия: "/>
+                    <TextBox Width="200px" Text="{Binding SelectedStudent.LastName, TargetNullValue=Фамилия}"/>
                 </StackPanel>
             </StackPanel>
         </Grid>

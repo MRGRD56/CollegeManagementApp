@@ -111,6 +111,7 @@
     <Compile Include="Pages\Students\StudentsMgmtPage.xaml.cs">
       <DependentUpon>StudentsMgmtPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Students\StudentsMgmtPageViewModel.cs" />
     <Compile Include="Pages\WelcomePage.xaml.cs">
       <DependentUpon>WelcomePage.xaml</DependentUpon>
     </Compile>
@@ -155,6 +156,7 @@
   <ItemGroup>
     <Folder Include="Pages\Groups\" />
     <Folder Include="Pages\Teachers\" />
+    <Folder Include="ViewModels\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
