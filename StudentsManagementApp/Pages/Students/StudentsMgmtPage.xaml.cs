@@ -1,59 +1,94 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using StudentsManagementApp.Models;
+using System;
 using System.Collections.ObjectModel;
-using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using StudentsManagementApp.Models;
 
 namespace StudentsManagementApp.Pages.Students
 {
     /// <summary>
     /// Логика взаимодействия для StudentsMgmtPage.xaml
     /// </summary>
-    public partial class StudentsMgmtPage : Page
+    public partial class StudentsMgmtPage : Page, INotifyPropertyChanged
     {
         public ObservableCollection<Student> StudentsList { get; set; }
-        public Student SelectedStudent { get; set; } = new Student() {LastName = "Empty"};
+
+        public Student SelectedStudent
+        {
+            get => StudentsMgmtPageViewModel.SelectedStudent;
+            set
+            {
+                StudentsMgmtPageViewModel.SelectedStudent = value;
+                OnPropertyChanged("SelectedStudent");
+            }
+        }
 
         public StudentsMgmtPage()
         {
-            
             InitializeComponent();
-            //StudentsList = App.DbModel.Students.Local;
             StudentsList = new ObservableCollection<Student>(App.DbModel.Students);
-            
-            
+
             DataContext = this;
-            //App.DbModel.Students.Add(new Student()
-            //    {Age = 18, Group = new Group(), FirstName = "FirstS", LastName = "LastS"});
-            //App.DbModel.SaveChanges();
-            //Binding binding = BindingOperations.GetBinding(StudentsListBox, ListBox.ItemsSourceProperty);
-
         }
 
-        private void StudentsListBoxSelectionChanged(object sender, SelectionChangedEventArgs e)
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public void OnPropertyChanged([CallerMemberName] string prop = "")
         {
-            SelectedStudent = (Student) StudentsListBox.SelectedItem;
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
+            //var selectedStudent = SelectedStudent;
+            //App.DbModel.Students.Remove(selectedStudent);
+            //App.DbModel.Students.Add(selectedStudent);
+            //App.DbModel.SaveChanges();
         }
+
 
         private void RemoveSelectedStudent(object sender, RoutedEventArgs e)
         {
-            App.DbModel.Students.Remove(SelectedStudent);
-            App.DbModel.SaveChanges();
+            if (StudentsList.Contains(SelectedStudent))
+            {
+                App.DbModel.Students.Remove(SelectedStudent);
+                App.DbModel.SaveChanges();
 
-            StudentsList.Remove(SelectedStudent);
+                StudentsList.Remove(SelectedStudent);
+            }
+        }
+
+
+        private void SaveChanges(object sender, RoutedEventArgs e)
+        {
+            var selectedStudent = SelectedStudent;
+            App.DbModel.Students.Remove(selectedStudent);
+            App.DbModel.Students.Add(selectedStudent);
+            App.DbModel.SaveChanges();
+        }
+
+        private void AddStudent(object sender, RoutedEventArgs e)
+        {
+            var newStudent = new Student() { LastName = "Новый", FirstName = "студент" };
+            StudentsList.Add(newStudent);
+            App.DbModel.Students.Add(newStudent);
+            StudentsListBox.SelectedItem = newStudent;
+        }
+
+        private void StudentsLBoxSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            //StudentsListBox.SelectedItem = StudentsMgmtPageViewModel.InitialStudent;
+            //StudentsMgmtPageViewModel.InitialStudent = (Student)StudentsListBox.SelectedItem;
+        }
+
+        private void SearchTextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (SearchTextBox.Text == String.Empty)
+            {
+                StudentsList = new ObservableCollection<Student>(App.DbModel.Students);
+            }
+            else
+            {
+                StudentsList = StudentsMgmtPageViewModel.GetFilteredStudentsList(SearchTextBox.Text);
+            }
         }
     }
 }

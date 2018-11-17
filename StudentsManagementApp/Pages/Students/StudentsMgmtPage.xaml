@@ -19,8 +19,13 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="30px"/>
             </Grid.RowDefinitions>
+<<<<<<< HEAD
+            <TextBox Name="SearchTextBox" MinWidth="226" MaxWidth="226px" HorizontalAlignment="Right" Margin="0 4 5 4" BorderThickness="0" Background="#546e7a" Foreground="#b0bec5" TextChanged="SearchTextChanged"/>
+            <ListBox Name="StudentsListBox" Grid.Row="1" Background="#455a64" BorderThickness="0" ItemsSource="{Binding StudentsList}" SelectedItem="{Binding SelectedStudent}" SelectionChanged="StudentsLBoxSelectionChanged">
+=======
             <TextBox MinWidth="226" MaxWidth="226px" HorizontalAlignment="Right" Margin="0 4 5 4" BorderThickness="0" Background="#546e7a" Foreground="#b0bec5"/>
-            <ListBox Name="StudentsListBox" Grid.Row="1" Background="#455a64" BorderThickness="0" ItemsSource="{Binding StudentsList}" SelectedItem="{Binding SelectedStudent}">
+            <ListBox Name="StudentsListBox" Grid.Row="1" Background="#455a64" BorderThickness="0" ItemsSource="{Binding StudentsList}" SelectionChanged="StudentsListBoxSelectionChanged">
+>>>>>>> parent of df23751... v1.31.1
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Height="30px" Orientation="Horizontal">
@@ -31,17 +36,36 @@
                 </ListBox.ItemTemplate>
             </ListBox>
             <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
-                <Button Margin="6 4" Content="Удалить" Height="auto" Width="75px" Click="RemoveSelectedStudent"/>
-                <Button Margin="6 4" Content="Изменить" Height="auto" Width="75px"/>
-                <Button Margin="6 4" Content="Добавить" Height="auto" Width="75px"/>
+                <Button Margin="10 4" Content="Добавить" Height="auto" Width="100px" Click="AddStudent"/>
+                <!--<Button Margin="6 4" Content="Изменить" Height="auto" Width="75px"/>-->
+                <Button Margin="10 4" Content="Удалить" Height="auto" Width="100" Click="RemoveSelectedStudent"/>
+                
             </StackPanel>
         </Grid>
         <Grid Name="StudentInfoGrid" Grid.Column="1">
-            <StackPanel>
+            <StackPanel HorizontalAlignment="Left" Width="300px">
                 <StackPanel Orientation="Horizontal">
+<<<<<<< HEAD
                     <Label Foreground="White" Content="Фамилия: "/>
-                    <TextBox Width="200px" Text="{Binding SelectedStudent.LastName, TargetNullValue=Фамилия}"/>
+                    <TextBox MinWidth="180" Margin="0 4 5 4" BorderThickness="0" Background="#546e7a" Foreground="#b0bec5" HorizontalAlignment="Right" Width="200px" Text="{Binding SelectedStudent.LastName, TargetNullValue=Фамилия}"/>
+=======
+                    <Label Content="Фамилия: "/>
+                    <TextBox Width="200px" Text="{Binding Source=SelectedStudent, Path=LastName, TargetNullValue=Фамилия}"/>
+>>>>>>> parent of df23751... v1.31.1
                 </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Foreground="White" Content="Имя: "/>
+                    <TextBox MinWidth="180" Margin="0 4 5 4" BorderThickness="0" Background="#546e7a" Foreground="#b0bec5" HorizontalAlignment="Right" Width="200px" Text="{Binding SelectedStudent.FirstName, TargetNullValue=Имя}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Foreground="White" Content="Возраст: "/>
+                    <TextBox MinWidth="180" Margin="0 4 5 4" BorderThickness="0" Background="#546e7a" Foreground="#b0bec5" HorizontalAlignment="Right" Width="200px" Text="{Binding SelectedStudent.Age, TargetNullValue=Возраст}"/>
+                </StackPanel>
+                <!--<StackPanel Orientation="Horizontal">
+                    <Label Foreground="White" Content="Группа: "/>
+                    <ComboBox Width="200px" ItemsSource="{Binding GroupsList.Group, TargetNullValue=Группа}" SelectedItem="{Binding SelectedStudent.Group}"/>
+                </StackPanel>-->
+                <Button Width="100px" Height="20px" Content="Сохранить" Margin="0 15" Click="SaveChanges"/>
             </StackPanel>
         </Grid>
     </Grid>

@@ -111,7 +111,6 @@
     <Compile Include="Pages\Students\StudentsMgmtPage.xaml.cs">
       <DependentUpon>StudentsMgmtPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Students\StudentsMgmtPageViewModel.cs" />
     <Compile Include="Pages\WelcomePage.xaml.cs">
       <DependentUpon>WelcomePage.xaml</DependentUpon>
     </Compile>
@@ -144,7 +143,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -156,7 +157,11 @@
   <ItemGroup>
     <Folder Include="Pages\Groups\" />
     <Folder Include="Pages\Teachers\" />
+<<<<<<< HEAD
+    <Folder Include="TextFiles\" />
     <Folder Include="ViewModels\" />
+=======
+>>>>>>> parent of df23751... v1.31.1
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
